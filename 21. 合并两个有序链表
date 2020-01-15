@@ -1,0 +1,23 @@
+class Solution {
+public:
+    //不用申请内存直接将原有链表合并即可
+    ListNode* mergeTwoLists(ListNode* l1, ListNode* l2) {
+        ListNode Head(-1);  //在栈中定义一个哨兵结点减少判断，且不用释放
+        ListNode *pCur = &Head; 
+        while(l1 && l2){            
+            //有两个条件都要判断大小，所以用if else判断减少代码
+            if(l1->val <= l2->val)
+            {
+                pCur->next = l1;
+                pCur = pCur->next;
+                l1 = l1->next;
+            }else{
+                pCur->next = l2;
+                pCur = pCur->next;
+                l2 = l2->next;
+            }
+        }
+        pCur->next = l1 ? l1 : l2;//剩下的赋值给next
+        return Head.next;
+    }
+};
