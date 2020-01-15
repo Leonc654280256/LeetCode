@@ -9,7 +9,7 @@ public:
             if(l1->val <= l2->val)
             {
                 pCur->next = l1;
-                pCur = pCur->next;
+                pCur = pCur->next; 
                 l1 = l1->next;
             }else{
                 pCur->next = l2;
